@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Vue.js Testing</title>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    {{ test }}
+</div>
+
+<script>
+    // Our data object
+    var data = { test: 1 }
+
+    // The object is added to a Vue instance
+    var vm = new Vue({
+        el: '#app',
+        data: data
+    })
+
+    // Getting the property on the instance
+    // returns the one from the original data
+    vm.test == data.test // => true
+
+    // Setting the property on the instance
+    // also affects the original data
+    vm.test = 2
+    data.test // => 2
+
+    // ... and vice-versa
+    data.test = 3
+    vm.test // => 3
+
+    console.log(data.test);
+    console.log(vm.test);
+</script>
+
+</body>
+
+</html>
