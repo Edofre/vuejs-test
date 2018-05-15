@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Vue.js Testing</title>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <p>{{ test }}</p>
+    <!-- this will no longer update `foo`! -->
+    <button v-on:click="changeTestValue">Change to wat</button>
+</div>
+
+<script>
+    var data = {
+        test: 'testing'
+    }
+
+    Object.freeze(data)
+
+    new Vue({
+        el: '#app',
+        data: data,
+        methods: {
+            changeTestValue: function () {
+                // Try to change value
+                data.test = 'wat'
+                // We coulnd't change value because it's read only
+                console.log(data.test);
+            }
+        }
+    })
+</script>
+
+</body>
+
+</html>
