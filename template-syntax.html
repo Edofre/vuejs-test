@@ -12,8 +12,11 @@
     <span>Message: {{ message }}</span>
 
     <hr/>
-
     <span v-once>This will never change: {{ message }}</span>
+
+    <hr/>
+    <p>Using mustaches: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 
 </div>
 
@@ -21,7 +24,8 @@
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Testing message!'
+            message: 'Testing message!',
+            rawHtml: '<span style="color: green">Ruwe HTML</span>'
         }
     })
 </script>
