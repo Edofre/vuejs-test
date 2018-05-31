@@ -22,6 +22,11 @@
     <div v-bind:id="dynamicId">{{ dynamicId }}</div>
     <button v-bind:disabled="isButtonDisabled">Button</button>
 
+    <hr/>
+    {{ number + 1 }}
+    {{ ok ? 'YES' : 'NO' }}
+    {{ message.split('').reverse().join('') }}
+    <div v-bind:id="'list-' + id"></div>
 
 </div>
 
@@ -33,7 +38,9 @@
             rawHtml: '<span style="color: green">Ruwe HTML</span>',
 
             dynamicId: 1,
-            isButtonDisabled: true
+            isButtonDisabled: true,
+
+            number: 11,
         }
     })
 </script>
