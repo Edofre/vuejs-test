@@ -33,6 +33,8 @@
     <p v-if="!seen">Now you don't</p>
 
     <hr/>
+    <a v-bind:href="url" target="_blank">{{ url }}</a>
+    <br/>
     <a v-on:click="doSomething"> {{ something }} </a>
 
 </div>
@@ -51,7 +53,8 @@
 
             seen: true,
 
-            something: 0
+            something: 0,
+            url: "http://www.github.com",
 
         },
         methods: {
