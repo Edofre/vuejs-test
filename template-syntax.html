@@ -32,6 +32,9 @@
     <p v-if="seen">Now you see me</p>
     <p v-if="!seen">Now you don't</p>
 
+    <hr/>
+    <a v-on:click="doSomething"> {{ something }} </a>
+
 </div>
 
 <script>
@@ -47,6 +50,14 @@
             number: 11,
 
             seen: true,
+
+            something: 0
+
+        },
+        methods: {
+            doSomething: function () {
+                this.something += 1;
+            }
         }
     })
 </script>
