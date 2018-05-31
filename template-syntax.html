@@ -18,6 +18,11 @@
     <p>Using mustaches: {{ rawHtml }}</p>
     <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 
+    <hr/>
+    <div v-bind:id="dynamicId">{{ dynamicId }}</div>
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+
+
 </div>
 
 <script>
@@ -25,7 +30,10 @@
         el: '#app',
         data: {
             message: 'Testing message!',
-            rawHtml: '<span style="color: green">Ruwe HTML</span>'
+            rawHtml: '<span style="color: green">Ruwe HTML</span>',
+
+            dynamicId: 1,
+            isButtonDisabled: true
         }
     })
 </script>
