@@ -28,6 +28,10 @@
     {{ message.split('').reverse().join('') }}
     <div v-bind:id="'list-' + id"></div>
 
+    <hr/>
+    <p v-if="seen">Now you see me</p>
+    <p v-if="!seen">Now you don't</p>
+
 </div>
 
 <script>
@@ -41,6 +45,8 @@
             isButtonDisabled: true,
 
             number: 11,
+
+            seen: true,
         }
     })
 </script>
