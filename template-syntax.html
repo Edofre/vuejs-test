@@ -37,6 +37,13 @@
     <br/>
     <a v-on:click="doSomething"> {{ something }} </a>
 
+    <hr/>
+
+    <form v-on:submit.prevent="onSubmit">
+        <input type="text" v-model="testing_input">
+        <button type="submit">Submit test form</button>
+    </form>
+
 </div>
 
 <script>
@@ -50,16 +57,23 @@
             isButtonDisabled: true,
 
             number: 11,
+            ok: true,
+            id: 12,
 
             seen: true,
 
             something: 0,
             url: "http://www.github.com",
 
+            testing_input: '',
+
         },
         methods: {
             doSomething: function () {
                 this.something += 1;
+            },
+            onSubmit: function () {
+                console.log(this.testing_input);
             }
         }
     })
