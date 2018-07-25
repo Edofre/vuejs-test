@@ -19,10 +19,9 @@
 <section class="section">
     <div class="my-container">
         <div id="app">
-
-
             <custom-input v-model="searchText"></custom-input>
             <p>{{ searchText }}</p>
+            <hr/>
 
             <h1 class="title">Blogs</h1>
             <div :style="{ fontSize: postFontSize + 'em' }">
@@ -32,8 +31,16 @@
                         v-bind:post="post"
                         v-on:enlarge-text="onEnlargeText"
                 ></blog-post>
-                <hr/>
             </div>
+            <hr/>
+
+            <alert-box>
+                Something bad happened.
+            </alert-box>
+
+            <alert-box>
+                Something awful has happened.
+            </alert-box>
         </div>
     </div>
 </section>
@@ -58,6 +65,16 @@
       <div v-html="post.content"></div>
       <button class="button is-primary" v-on:click="$emit('enlarge-text', 0.1)">Enlarge text</button>
       <br/>
+    </div>
+  `
+    })
+
+    Vue.component('alert-box', {
+        template: `
+    <div class="notification is-danger">
+      <button class="delete"></button>
+      <strong>Error!</strong>
+      <slot></slot>
     </div>
   `
     })
