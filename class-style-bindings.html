@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Vue.js Testing class style bindings</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"/>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+<section class="section">
+    <div id="app">
+        <div class="field is-grouped is-grouped-multiline">
+            <p class="control">
+                <a v-bind:class="{ 'has-background-success': isThisTrue }" class="button">One</a>
+            </p>
+            <p class="control">
+                <a v-bind:class="classObject" class="button">Two</a>
+            </p>
+            <p class="control">
+                <a v-bind:class="[backgroundClass, textClass]" class="button">Array syntax</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            error: null,
+            isThisTrue: true,
+            // Array syntax
+            backgroundClass: 'has-background-warning',
+            textClass: 'has-text-danger',
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    'has-background-danger': this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+
+</html>
