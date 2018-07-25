@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Vue.js Testing form input binding</title>
+
+    <!-- include bulma framework for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"/>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .my-container {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="section">
+    <div class="my-container">
+        <div id="app">
+
+            <div class="control">
+                <input class="input" v-model="message" placeholder="Enter your message">
+                <p>Message is: {{ message }}</p>
+            </div>
+
+            <div class="control">
+                <textarea class="textarea" v-model="message" placeholder="add multiple lines"></textarea>
+                <span>Multiline message is:</span>
+                <p style="white-space: pre-line;">{{ message }}</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '',
+        },
+        computed: {},
+        methods: {}
+    });
+</script>
+
+</body>
+</html>
