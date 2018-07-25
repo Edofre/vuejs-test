@@ -1,0 +1,76 @@
+<html>
+<head>
+    <title>Vue.js Testing list rendering</title>
+
+    <!-- include bulma framework for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"/>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+<section class="section">
+    <div id="app">
+        <button class="button" v-on:click="counter += 1">Add 1</button>
+        <p>The button above has been clicked {{ counter }} times.</p>
+        <br/>
+
+        <button class="button" v-on:click="greet">Greet</button>
+        <br/>
+
+        <button class="button" v-on:click="say('hi')">Say hi</button>
+        <button class="button" v-on:click="say('what')">Say what</button>
+        <br/>
+
+        <button class="button" v-on:click="warn('Form cannot be submitted yet.', $event)">
+            Submit
+        </button>
+        <br/>
+
+        <!-- same as above -->
+        <input v-on:keyup.enter="submit">
+
+        <!-- also works for shorthand -->
+        <input @keyup.enter="submit">
+    </div>
+</section>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            name: 'Tester',
+        },
+        computed: {},
+        methods: {
+            greet: function (event) {
+                // `this` inside methods points to the Vue instance
+                // alert('Hello ' + this.name + '!');
+                // `event` is the native DOM event
+                if (event) {
+                    console.log(event.target.tagName)
+                }
+            },
+            say: function (message) {
+                console.log(message)
+            },
+            warn: function (message, event) {
+                // now we have access to the native event
+                if (event) event.preventDefault()
+                alert(message)
+            },
+            submit: function() {
+                console.log('sub')
+            }
+        }
+    })
+
+
+    app.greet();
+</script>
+
+</body>
+</html>
