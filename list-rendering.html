@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>Vue.js Testing list rendering</title>
+
+    <!-- include bulma framework for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"/>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+<section class="section">
+    <div id="app">
+        <ul id="example-1">
+            <li v-for="item in items">
+                {{ item.message }}
+            </li>
+        </ul>
+
+        <ul id="example-2">
+            <li v-for="(item, index) in items">
+                {{ parentMessage }} - {{ index }} - {{ item.message }}
+            </li>
+        </ul>
+
+        <ul id="v-for-object" class="demo">
+            <li v-for="value in object">
+                {{ value }}
+            </li>
+        </ul>
+
+        <div v-for="(value, key) in object">
+            {{ key }}: {{ value }}
+        </div>
+
+        <ul>
+            <li v-for="n in evenNumbers">{{ n }}</li>
+        </ul>
+
+        <ul>
+            <li v-for="n in odd(numbers)">{{ n }}</li>
+        </ul>
+    </div>
+</section>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            parentMessage: 'Parent',
+            items: [
+                {message: 'Foo'},
+                {message: 'Bar'}
+            ],
+            object: {
+                firstName: 'Edo',
+                lastName: 'Doe',
+                age: 29
+            },
+            numbers: [0, 1, 2, 3, 4, 5, 6]
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        },
+        methods: {
+            odd: function (numbers) {
+                return numbers.filter(function (number) {
+                    return number % 2 !== 0
+                })
+            }
+        }
+    })
+</script>
+
+</body>
+
+</html>
