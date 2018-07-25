@@ -79,6 +79,10 @@
             <label>Email</label>
             <input placeholder="Enter your email address" key="email-input">
         </template>
+
+        <h1 v-show="ok">Hello!</h1>
+
+        <h1 v-show="!ok">Not hello!</h1>
     </div>
 </section>
 
@@ -86,7 +90,7 @@
     var app = new Vue({
         el: '#app',
         data: {
-            ok: false,
+            ok: true,
             type: 'B',
             loginType: 'username',
         },
