@@ -13,11 +13,72 @@
 <section class="section">
     <div id="app">
 
-        <h1 v-if="ok">Yes</h1>
+        <!--<h1 v-if="ok">Yes</h1>-->
+        <!--<h1 v-if="!ok">No</h1>-->
 
-        <h1 v-if="!ok">No</h1>
+        <!--<h1 v-if="ok">Yes</h1>-->
+        <!--<h1 v-else>No</h1>-->
 
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <template v-else>
+            <h1>Title 2</h1>
+            <p>Paragraph 1</p>
+        </template>
 
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+
+        <template v-if="loginType === 'username'">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Username</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Enter your username">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template v-else>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Email</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="email" placeholder="Enter your email">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </template>
     </div>
 </section>
 
@@ -25,7 +86,9 @@
     var app = new Vue({
         el: '#app',
         data: {
-            ok: true
+            ok: false,
+            type: 'B',
+            loginType: 'username',
         },
     })
 </script>
