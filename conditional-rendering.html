@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Vue.js Testing class style bindings</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"/>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+<section class="section">
+    <div id="app">
+
+        <h1 v-if="ok">Yes</h1>
+
+        <h1 v-if="!ok">No</h1>
+
+
+    </div>
+</section>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            ok: true
+        },
+    })
+</script>
+
+</body>
+
+</html>
