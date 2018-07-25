@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Vue.js Testing components basic single root</title>
+
+    <!-- include bulma framework for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"/>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .my-container {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="section">
+    <div class="my-container">
+        <div id="app">
+
+
+            <custom-input v-model="searchText"></custom-input>
+            <p>{{ searchText }}</p>
+
+            <h1 class="title">Blogs</h1>
+            <div :style="{ fontSize: postFontSize + 'em' }">
+                <blog-post
+                        v-for="post in posts"
+                        v-bind:key="post.id"
+                        v-bind:post="post"
+                        v-on:enlarge-text="onEnlargeText"
+                ></blog-post>
+                <hr/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+    })
+
+    Vue.component('blog-post', {
+        props: ['post'],
+        template: `
+    <div class="blog-post">
+      <h2 class="subtitle">{{ post.title }}</h2>
+      <div v-html="post.content"></div>
+      <button class="button is-primary" v-on:click="$emit('enlarge-text', 0.1)">Enlarge text</button>
+      <br/>
+    </div>
+  `
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id: 1, title: 'My journey with Vue', content: 'Dit is de content'},
+                {id: 2, title: 'Blogging with Vue', content: 'Dit is nog meer content'},
+                {id: 3, title: 'Why Vue is so fun', content: 'Dit is ook content'}
+            ],
+            postFontSize: 1,
+            searchText: '',
+        },
+        computed: {},
+        methods: {
+            onEnlargeText: function (enlargeAmount) {
+                this.postFontSize += enlargeAmount
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
