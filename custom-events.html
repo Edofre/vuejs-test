@@ -20,6 +20,8 @@
     <div class="my-container">
         <div id="app">
             <base-checkbox v-model="lovingVue"></base-checkbox>
+
+            {{ lovingVue }}
         </div>
     </div>
 </section>
@@ -45,7 +47,7 @@
     var app = new Vue({
         el: '#app',
         data: {
-            lovingVue: '',
+            lovingVue: false,
         },
         computed: {},
         methods: {}
