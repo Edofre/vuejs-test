@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Vue.js Testing slots</title>
+
+    <!-- include bulma framework for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"/>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .my-container {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="section">
+    <div class="my-container">
+        <div id="app">
+            <navigation-link url="/profile">
+                Your Profile
+            </navigation-link>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Define a new component called button-counter
+    Vue.component('navigation-link', {
+        template: `
+        <a
+          v-bind:href="url"
+          class="nav-link"
+        >
+          <slot></slot>
+        </a>
+        `
+    });
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id: 1, title: 'My journey with Vue'},
+                {id: 2, title: 'Blogging with Vue'},
+                {id: 3, title: 'Why Vue is so fun'}
+            ]
+        },
+        computed: {},
+        methods: {}
+    });
+</script>
+
+</body>
+</html>
